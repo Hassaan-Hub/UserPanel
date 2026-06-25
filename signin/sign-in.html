@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+
+<body
+    class="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0d0b3d] via-[#1d1b5c] to-[#090728] overflow-hidden">
+
+    <!-- Glow -->
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(120,80,255,0.25),transparent_70%)]">
+    </div>
+
+    <!-- Card -->
+    <div
+        class="relative w-[90%] max-w-[420px] h-[550px] bg-[#2f2b72] rounded-[25px] shadow-[0_0_50px_rgba(0,0,0,0.6)] overflow-hidden">
+
+        <!-- Top Purple Area -->
+        <div class="flex items-center justify-center h-[120px]">
+            <a href="../signup/sign-up.html" class="text-white text-3xl font-bold">
+                Sign up
+            </a>
+        </div>
+
+        <!-- White Curved Section -->
+        <div class="absolute top-[80px] left-0 w-full h-[540px] bg-[#ececec] rounded-t-[100%] px-10 pt-10">
+
+            <h1 class="text-center text-[#4f378f] text-5xl font-bold mb-12">
+                Login
+            </h1>
+
+            <!-- Inputs -->
+            <div class="space-y-5">
+
+                <input type="email" placeholder="Email" id="email"
+                    class="w-full h-14 px-5 rounded bg-[#dcd8d8] text-gray-700 placeholder:text-gray-500 outline-none">
+
+                <input type="password" placeholder="Password" id="password"
+                    class="w-full h-14 px-5 rounded bg-[#dcd8d8] text-gray-700 placeholder:text-gray-500 outline-none">
+
+            </div>
+
+            <!-- Button -->
+            <button id="signInBtn"
+                class="w-full mt-8 h-14 bg-[#6d45b6] hover:bg-[#5d38a0] text-white text-xl font-bold rounded transition">
+                Login
+            </button>
+
+        </div>
+
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script type="module" src="signin.js"></script>
+</html>

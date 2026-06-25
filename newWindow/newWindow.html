@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="p-10 bg-gray-100">
+
+    <div class="flex justify-between items-center mb-5">
+        <h1 id="wel" class="text-3xl font-bold"></h1>
+
+        <a href="../signin/sign-in.html"
+            class="bg-red-500 text-white px-4 py-2 rounded">
+            Sign Out
+        </a>
+    </div>
+    <table class="w-full border border-gray-300 bg-white">
+        <thead class="bg-gray-200">
+            <tr>
+                <th class="border p-2">Name</th>
+                <th class="border p-2">Email</th>
+                <th class="border p-2">Age</th>
+                <th class="border p-2">City</th>
+                <th class="border p-2">Profession</th>
+                <th class="border p-2">Timestamp</th>
+                <th class="border p-2">Actions</th>
+            </tr>
+        </thead>
+
+        <tbody id="userTableBody"></tbody>
+    </table>
+
+</body>
+
+<script type="module" src="app.js"></script>
+</html>

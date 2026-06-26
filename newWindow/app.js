@@ -6,7 +6,8 @@ import {
     getDocs,
     deleteDoc,
     doc,
-    deleteUser
+    deleteUser,
+    updateDoc
 } from "../firebaseCode.js";
 
 const auth = getAuth();
@@ -16,7 +17,7 @@ const heading = document.getElementById("wel");
 onAuthStateChanged(auth, async (user) => {
 
     if (user) {
-        
+
         heading.innerText = "Welcome To Dashboard";
 
         const querySnapshot = await getDocs(
@@ -28,7 +29,7 @@ onAuthStateChanged(auth, async (user) => {
         querySnapshot.forEach((docItem) => {
 
             const data = docItem.data();
-            const docId = docItem.id; // 👈 Firestore document ID
+            const docId = docItem.id;
 
             const tr = document.createElement("tr");
 
@@ -57,6 +58,17 @@ onAuthStateChanged(auth, async (user) => {
                     <button class="deleteBtn bg-red-500 text-white px-3 py-1 rounded">Delete</button>
                 </td>
             `;
+
+            tr.querySelector('.editBtn').addEventListener('click', async () => {
+                const newName = prompt("Enter your updated Name: ", data.name)
+
+                if (newName) {
+                    await updateDoc(doc(db, "users", docId), {
+                        name: newName
+                    });
+                    tr.children[0].innerText = newName;
+                }
+            })
 
             tr.querySelector(".deleteBtn").addEventListener("click", async () => {
                 await deleteDoc(doc(db, "users", docId));

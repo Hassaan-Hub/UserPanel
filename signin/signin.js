@@ -7,11 +7,6 @@ const password = document.getElementById('password');
 const signInBtn = document.getElementById('signInBtn');
 
 
-onAuthStateChanged(auth, (user) =>{
-    if(user){
-        window.location.href = "../newWindow/newWindow.html"
-    }
-})
 
 signInBtn.addEventListener('click', async () => {
     try {

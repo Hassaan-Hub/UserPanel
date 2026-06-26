@@ -17,7 +17,8 @@ import {
     collection,
     getDocs,
     serverTimestamp,
-    deleteDoc
+    deleteDoc,
+    updateDoc
 }
     from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
 
@@ -49,5 +50,6 @@ export {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     sendEmailVerification,
-    deleteUser
+    deleteUser,
+    updateDoc
 };

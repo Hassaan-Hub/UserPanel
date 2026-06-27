@@ -59,16 +59,38 @@ onAuthStateChanged(auth, async (user) => {
                 </td>
             `;
 
-            tr.querySelector('.editBtn').addEventListener('click', async () => {
-                const newName = prompt("Enter your updated Name: ", data.name)
+            const editBtn = tr.querySelector(".editBtn");
 
-                if (newName) {
+            editBtn.addEventListener("click", async () => {
+                const nameTd = tr.children[0];
+
+                if (editBtn.innerText === "Edit") {
+                    const currentName = nameTd.innerText;
+
+                    nameTd.innerHTML = `<input type="text" value="${currentName}" class="border px-2 py-1 rounded w-full" />`;
+
+                    nameTd.querySelector("input").focus();
+
+                    editBtn.innerText = "Save";
+                    editBtn.classList.replace("bg-blue-500", "bg-green-500");
+                } else {
+                    const input = nameTd.querySelector("input");
+                    const newName = input.value.trim();
+
+                    if (!newName) return;
+
+                    // 🔥 Firestore update
                     await updateDoc(doc(db, "users", docId), {
                         name: newName
                     });
-                    tr.children[0].innerText = newName;
+
+                    // Table update
+                    nameTd.innerText = newName;
+
+                    editBtn.innerText = "Edit";
+                    editBtn.classList.replace("bg-green-500", "bg-blue-500");
                 }
-            })
+            });
 
             tr.querySelector(".deleteBtn").addEventListener("click", async () => {
                 await deleteDoc(doc(db, "users", docId));

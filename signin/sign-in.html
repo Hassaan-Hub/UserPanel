@@ -5,49 +5,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <!-- Modern Premium Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        @keyframes shimmer {
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .shimmer-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+        }
+
+        .group:hover .shimmer-effect {
+            animation: shimmer 1.5s infinite;
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body
-    class="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0d0b3d] via-[#1d1b5c] to-[#090728] overflow-hidden">
+<body class="min-h-screen flex items-center justify-center bg-[#07051d] overflow-x-hidden relative p-4">
+    <!-- Glow Effects / Decorative Orbs -->
+    <div class="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-indigo-600/30 rounded-full blur-[100px] -z-10 animate-pulse"
+        style="animation-duration: 8s;"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] bg-violet-600/25 rounded-full blur-[120px] -z-10 animate-pulse"
+        style="animation-duration: 12s;"></div>
 
-    <!-- Glow -->
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(120,80,255,0.25),transparent_70%)]">
-    </div>
-
-    <!-- Card -->
+    <!-- Main Card Container -->
     <div
-        class="relative w-[90%] max-w-[420px] h-[550px] bg-[#2f2b72] rounded-[25px] shadow-[0_0_50px_rgba(0,0,0,0.6)] overflow-hidden">
+        class="relative w-full max-w-[420px] h-[580px] bg-[#0d0a2d]/40 backdrop-blur-xl border border-white/10 rounded-[30px] shadow-[0_20px_50px_rgba(0,0,0,0.6)] overflow-hidden transition-all duration-300 hover:border-white/15">
 
-        <!-- Top Purple Area -->
-        <div class="flex items-center justify-center h-[120px]">
-            <a href="../signup/sign-up.html" class="text-white text-3xl font-bold">
+        <!-- Glow border overlay -->
+        <div
+            class="absolute inset-0 border border-transparent rounded-[30px] pointer-events-none bg-gradient-to-br from-white/10 to-transparent opacity-30">
+        </div>
+
+        <!-- Top Area (Header with Sign Up redirection) -->
+        <div class="flex flex-col items-center justify-center h-[110px] gap-1 z-10 relative">
+            <span class="text-white/40 text-[10px] uppercase font-bold tracking-widest">New here?</span>
+            <a href="../signup/sign-up.html"
+                class="text-white hover:text-violet-400 text-2xl font-extrabold tracking-tight transition-all duration-300 hover:scale-105">
                 Sign up
             </a>
         </div>
 
-        <!-- White Curved Section -->
-        <div class="absolute top-[80px] left-0 w-full h-[540px] bg-[#ececec] rounded-t-[100%] px-10 pt-10">
+        <!-- Curved Dark Glass Section -->
+        <div
+            class="absolute top-[95px] left-0 w-full h-[485px] bg-[#0d0a2d]/95 backdrop-blur-2xl rounded-t-[100px] border-t border-white/15 px-8 pt-8 sm:px-10 sm:pt-10 shadow-[0_-15px_30px_rgba(109,69,182,0.15)] flex flex-col justify-between pb-8">
+            <div>
+                <h1 class="text-center text-white text-4xl font-extrabold tracking-tight mb-8">
+                    Login
+                </h1>
 
-            <h1 class="text-center text-[#4f378f] text-5xl font-bold mb-12">
-                Login
-            </h1>
+                <!-- Inputs Space -->
+                <div class="space-y-4">
 
-            <!-- Inputs -->
-            <div class="space-y-5">
+                    <!-- Email input with SVG icon -->
+                    <div class="relative group">
+                        <label
+                            class="block text-white/50 text-[11px] font-semibold uppercase tracking-wider mb-1.5 pl-1 transition-colors group-focus-within:text-violet-400">Email
+                            Address</label>
+                        <div class="relative">
+                            <span
+                                class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-white/30 group-focus-within:text-violet-400 transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                            </span>
+                            <input type="email" placeholder="name@domain.com" id="email"
+                                class="w-full h-12 pl-11 pr-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/20 outline-none transition-all duration-300 focus:bg-white/10 focus:border-violet-500 focus:ring-1 focus:ring-violet-500 text-sm">
+                        </div>
+                    </div>
 
-                <input type="email" placeholder="Email" id="email"
-                    class="w-full h-14 px-5 rounded bg-[#dcd8d8] text-gray-700 placeholder:text-gray-500 outline-none">
+                    <!-- Password input with SVG icon -->
+                    <!-- Password input with SVG icon & Show/Hide Toggle -->
+                    <div class="relative group">
+                        <label
+                            class="block text-white/50 text-[11px] font-semibold uppercase tracking-wider mb-1.5 pl-1 transition-colors group-focus-within:text-violet-400">Password</label>
+                        <div class="relative">
+                            <span
+                                class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-white/30 group-focus-within:text-violet-400 transition-colors">
+                                <!-- Lock Icon -->
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                </svg>
+                            </span>
+                            <input type="password" placeholder="••••••••" id="password"
+                                class="w-full h-12 pl-11 pr-12 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/20 outline-none transition-all duration-300 focus:bg-white/10 focus:border-violet-500 focus:ring-1 focus:ring-violet-500 text-sm">
 
-                <input type="password" placeholder="Password" id="password"
-                    class="w-full h-14 px-5 rounded bg-[#dcd8d8] text-gray-700 placeholder:text-gray-500 outline-none">
+                            <!-- Show/Hide Password Button -->
+                            <button type="button" id="togglePassword"
+                                class="absolute inset-y-0 right-0 pr-4 flex items-center text-white/30 hover:text-white/60 focus:outline-none transition-colors">
+                                <!-- Eye Icon (default visible) -->
+                                <svg id="eyeIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
 
+                </div>
+
+                <!-- Action Button -->
+                <button id="signInBtn"
+                    class="relative group w-full mt-8 h-12 overflow-hidden rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white text-sm font-bold tracking-wider uppercase transition-all duration-300 hover:shadow-lg hover:shadow-violet-600/30 active:scale-[0.98]">
+                    <!-- Shimmer overlay -->
+                    <span class="shimmer-effect"></span>
+                    Login
+                </button>
             </div>
 
-            <!-- Button -->
-            <button id="signInBtn"
-                class="w-full mt-8 h-14 bg-[#6d45b6] hover:bg-[#5d38a0] text-white text-xl font-bold rounded transition">
-                Login
-            </button>
+            <!-- Footer Details -->
+            <div class="text-center text-white/20 text-[9px] mt-4">
+                © 2026 Premium Auth. All rights reserved.
+            </div>
 
         </div>
 
@@ -55,6 +145,6 @@
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://cdn.tailwindcss.com"></script>
 <script type="module" src="signin.js"></script>
+
 </html>
